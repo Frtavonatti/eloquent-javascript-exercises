@@ -18,3 +18,30 @@ for (let index = 1; index <= 100; index++) {
         console.log(index);
     }
 } 
+
+// Ejercicio 3: Tablero de Ajedrez
+let size = 8
+let negro = '#'
+let blanco = ' '
+let fila = ''
+let tablero = ''
+
+for (let index = 1; index <= size; index++) {
+    fila = '';
+
+    if (index % 2 === 0) {
+        while (fila.length < size) {
+            fila += blanco
+            fila += negro 
+        }
+    } else {
+        while (fila.length < size) {
+            fila += negro 
+            fila += blanco
+        }
+    }      
+    
+    tablero += fila + '\n'
+}
+
+console.log(tablero)
