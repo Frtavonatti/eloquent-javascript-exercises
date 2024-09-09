@@ -20,28 +20,42 @@ for (let index = 1; index <= 100; index++) {
 } 
 
 // Ejercicio 3: Tablero de Ajedrez
-let size = 8
-let negro = '#'
-let blanco = ' '
-let fila = ''
-let tablero = ''
+// Mi solución inicial
 
-for (let index = 1; index <= size; index++) {
-    fila = '';
+// let size = 8
+// let negro = '#'
+// let blanco = ' '
+// let fila = ''
+// let tablero = ''
 
-    if (index % 2 === 0) {
-        while (fila.length < size) {
-            fila += blanco
-            fila += negro 
-        }
-    } else {
-        while (fila.length < size) {
-            fila += negro 
-            fila += blanco
-        }
-    }      
+// for (let index = 1; index <= size; index++) {
+//     fila = '';
+
+//     if (index % 2 === 0) {
+//         while (fila.length < size) {
+//             fila += blanco
+//             fila += negro 
+//         }
+//     } else {
+//         while (fila.length < size) {
+//             fila += negro 
+//             fila += blanco
+//         }
+//     }      
     
-    tablero += fila + '\n'
+//     tablero += fila + '\n'
+// }
+// console.log(tablero)
+
+// Ejercicio 3: Otra alternativa
+    let size = 8;
+    let tablero = '';
+
+for (let fila = 0; fila < size; fila++) {
+    for (let col = 0; col < size; col++) {
+        tablero += (fila + col) % 2 === 0 ? '#' : ' ';
+    }
+    tablero += '\n'; 
 }
 
-console.log(tablero)
+console.log(tablero);
