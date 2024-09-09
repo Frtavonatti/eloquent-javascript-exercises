@@ -28,8 +28,8 @@ function isEven(n) {
 
 console.log(isEven(50));  // Esperado: true
 console.log(isEven(75));  // Esperado: false
-console.log(isEven(-1));  // Observa el comportamiento y busca cómo solucionarlo.
-console.log(isEven(-18));  // Observa el comportamiento y busca cómo solucionarlo.
+console.log(isEven(-1));  // Esperado: false
+console.log(isEven(-18)); // Esperado: true
 
 
 

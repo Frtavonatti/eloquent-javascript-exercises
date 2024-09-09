@@ -22,40 +22,43 @@ for (let index = 1; index <= 100; index++) {
 // Ejercicio 3: Tablero de Ajedrez
 // Mi solución inicial
 
-// let size = 8
-// let negro = '#'
-// let blanco = ' '
-// let fila = ''
-// let tablero = ''
+let size = 8
+let negro = '#'
+let blanco = ' '
+let fila = ''
+let tablero = ''
 
-// for (let index = 1; index <= size; index++) {
-//     fila = '';
+for (let index = 1; index <= size; index++) {
+    fila = '';
 
-//     if (index % 2 === 0) {
-//         while (fila.length < size) {
-//             fila += blanco
-//             fila += negro 
-//         }
-//     } else {
-//         while (fila.length < size) {
-//             fila += negro 
-//             fila += blanco
-//         }
-//     }      
+    if (index % 2 === 0) {
+        while (fila.length < size) {
+            fila += blanco
+            fila += negro 
+        }
+    } else {
+        while (fila.length < size) {
+            fila += negro 
+            fila += blanco
+        }
+    }      
     
-//     tablero += fila + '\n'
-// }
-// console.log(tablero)
-
-// Ejercicio 3: Otra alternativa
-    let size = 8;
-    let tablero = '';
-
-for (let fila = 0; fila < size; fila++) {
-    for (let col = 0; col < size; col++) {
-        tablero += (fila + col) % 2 === 0 ? '#' : ' ';
-    }
-    tablero += '\n'; 
+    tablero += fila + '\n'
 }
+console.log(tablero)
 
-console.log(tablero);
+// Ejercicio 3: Solución inicial corregida
+let chessBoardSize = 8
+let chessBoard = ''
+
+for (let fila = 1; fila <= chessBoardSize; fila++) {
+    for (let col = 0; col < chessBoardSize; col++) { 
+        if ((fila + col) % 2 === 0) {
+            chessBoard += ' ' 
+        } else {
+            chessBoard += '#'
+        }           
+    }
+    chessBoard += '\n'
+}
+console.log(chessBoard)
