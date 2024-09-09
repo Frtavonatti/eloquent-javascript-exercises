@@ -37,17 +37,17 @@ function sum(array) {
 
 
 
+
 // EJERCICIO 2: Invertir un Array
 // Función reverseArray que toma un array y devuelve un nuevo array con los elementos invertidos
 function reverseArray(array) {
     let newArray = [];
-    // Lógica para invertir el array y devolver uno nuevo
+    
+    for (let index = (array.length - 1); index >= 0; index--) {
+        const element = array[index];
+        newArray.push(element)
+    }
     return newArray;
-}
-
-// Función reverseArrayInPlace que invierte los elementos del array original (modifica el array dado)
-function reverseArrayInPlace(array) {
-    // Lógica para invertir el array en su lugar
 }
 
 // Ejemplos de uso:
@@ -57,5 +57,24 @@ let arrayInvertido = reverseArray(arrayOriginal);
 console.log(arrayInvertido); // Debería devolver [5, 4, 3, 2, 1]
 console.log(arrayOriginal);  // El array original debería seguir igual [1, 2, 3, 4, 5]
 
-reverseArrayInPlace(arrayOriginal);
-console.log(arrayOriginal);  // Ahora el array original debería estar invertido [5, 4, 3, 2, 1]
+
+
+// Función reverseArrayInPlace que invierte los elementos del array original (modifica el array dado)
+function reverseArrayInPlace(array) {
+    let originalLength = array.length;
+
+    for (let index = (originalLength - 2); index >= 0; index--) {
+        const element = array[index];
+        array.push(element)
+    }
+    for (let i = 0; i < originalLength - 1; i++) {
+        array.shift(); // Eliminamos los primeros elementos
+    }
+    return array;
+}
+
+// Ejemplos de uso:
+let otherArray = [100, 200, 300, 400, 500];
+
+reverseArrayInPlace(otherArray);
+console.log(otherArray);  // Ahora el array original debería estar invertido [5, 4, 3, 2, 1]
