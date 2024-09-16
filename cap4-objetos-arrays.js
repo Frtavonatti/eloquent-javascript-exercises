@@ -84,86 +84,72 @@ console.log(otherArray);  // Ahora el array original debería estar invertido [5
 
 // EJERCICIO 3: Lista
 
-
 // Tareas:
-
 // 1. Escribe una función arrayToList que construya una estructura de lista como la mostrada
 //    cuando se le da [1, 2, 3] como argumento.
+
+const exampleArray = [1, 2, 5]
+
+// SOLUCION CON RECURSIVIDAD
+function arrayToList (array) {
+    let copyOfArray = [...array]
+
+    if (copyOfArray.length === 0) return null
+    return {
+        value: copyOfArray[0],
+        rest: arrayToList(copyOfArray.slice(1)) 
+      };
+}
+
+// SOLUCION CON FOR LOOP INVERTIDO
+function arrayToList2 (array) {
+    let list = null
+
+    for (let index = array.length - 1; index >= 0; index--) {
+        const element = array[index];   
+        list = { value: element, rest: list }
+    }
+
+    return list
+}
+
+console.log(arrayToList(exampleArray));
+console.log(arrayToList2(exampleArray));
+
+// 2. Escribe una función listToArray que produzca un array a partir de una lista.
+// 3. Agrega la función auxiliar prepend, que toma un elemento y una lista y crea una nueva lista
+//    que añade el elemento al principio de la lista de entrada.
+// 4. Agrega la función nth, que toma una lista y un número y devuelve el elemento en la posición dada 
+//    en la lista (siendo cero el primer elemento) o undefined cuando no hay tal elemento.
+// 5. Escribe una versión recursiva de nth.
+
 
 let exampleList = {
     value: 1,
     rest: {
         value: 2,
         rest: {
-        value: 3,
-        rest: null
+            value: 3,
+            rest: null
         }
     }
 };
 
-const exampleArray = [1, 2, 5]
+let newArray = [] 
 
-// function arrayToList (array) {
-//     let copyOfArray = [...array]
+function listToArray (list) {
 
-//     if (copyOfArray.length === 0) return null
-//     return {
-//         value: copyOfArray[0],
-//         rest: arrayToList(copyOfArray.slice(1)) 
-//       };
-// }
+    newArray.push(list.value)
 
-function arrayToList(array) {
-    let list = null;
-    for (let i = array.length - 1; i >= 0; i--) {
-      list = { value: array[i], rest: list };
+    if (list.rest !== null) {
+        list = list.rest
+        listToArray(list)
     }
-    return list;
-  }
 
-console.log(arrayToList(exampleArray));
+    return newArray
+}
 
-
-// 2. Escribe una función listToArray que produzca un array a partir de una lista.
-
-// 3. Agrega la función auxiliar prepend, que toma un elemento y una lista y crea una nueva lista
-//    que añade el elemento al principio de la lista de entrada.
-
-// 4. Agrega la función nth, que toma una lista y un número y devuelve el elemento en la posición dada 
-//    en la lista (siendo cero el primer elemento) o undefined cuando no hay tal elemento.
-
-// 5. Escribe una versión recursiva de nth.
-
-
-
-// Ejemplos de test:
-
-// 1. Prueba de arrayToList
-let list = arrayToList([1, 2, 3]);
-console.log(JSON.stringify(list)); 
-// Debería imprimir: {"value":1,"rest":{"value":2,"rest":{"value":3,"rest":null}}}
-
-// 2. Prueba de listToArray
-let array = listToArray(list);
-console.log(array); 
-// Debería imprimir: [1, 2, 3]
-
-// 3. Prueba de prepend
-let newList = prepend(0, list);
-console.log(JSON.stringify(newList)); 
-// Debería imprimir: {"value":0,"rest":{"value":1,"rest":{"value":2,"rest":{"value":3,"rest":null}}}}
-
-// 4. Prueba de nth
-console.log(nth(list, 1)); 
-// Debería imprimir: 2
-
-// 5. Prueba de nth recursivo
-console.log(nth(list, 2)); 
-// Debería imprimir: 3
-
-// Prueba de nth para un índice inexistente
-console.log(nth(list, 5)); 
-// Debería imprimir: undefined
+console.log(listToArray(exampleList))
 
 
 
